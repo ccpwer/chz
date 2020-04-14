@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chz.dao.DoctorMapper">
+	<select id="queryDoctorByopenid" parameterType="String"
+		resultType="Doctor">
+		select * from `doctor` where openid = #{openid}
+	</select>
+
+	<insert id="insertDoctor" parameterType="Doctor">
+		insert into `doctor`
+		values (
+		#{did },
+		#{uniacid},
+		#{openid},
+		#{d_name},
+		#{d_thumb},
+		#{d_keshi},
+		#{d_zhicheng},
+		#{d_zhiwu},
+		#{d_telephone},
+		#{d_email},
+		#{d_money},
+		#{d_content},
+		#{d_sex},
+		#{d_age},
+		#{d_shenfengzheng},
+		#{d_yiyuan},
+		false
+		)
+	</insert>
+
+	<select id="getAllDoctorRequest" resultType="Doctor">
+		select * from
+		`doctor` where d_checked = false
+	</select>
+
+	<update id="doctorCheckByDid" parameterType="String">
+		update `doctor` set
+		d_checked = true where did = #{did}
+	</update>
+
+	<delete id="deleteDoctorRequest" parameterType="String">
+		delete from
+		`doctor` where did = #{did}
+	</delete>
+
+	<select id="queryEmailBydid" parameterType="String"
+	resultType="String">
+		select d_email from `doctor` where did = #{did}
+	</select>
+
+
+
+
+
+
+
+
+</mapper>

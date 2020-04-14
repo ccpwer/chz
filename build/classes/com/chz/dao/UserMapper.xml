@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chz.dao.UserMapper">
+	<select id="queryUserByOpenid" parameterType="String"
+		resultType="User">
+		select * from `userinfo` where openid = #{openid}
+	</select>
+
+	<update id="updateUser" parameterType="User">
+		update `userinfo` set
+		uage
+		= #{uage},
+		uphone = #{uphone},
+		ushengfen = #{ushengfen},
+		uyibao =
+		#{uyibao},
+		uname = #{uname},
+		usex = #{usex},
+		uemail = #{uemail}
+		where
+		openid = #{openid}
+	</update>
+
+	<insert id="addUser" parameterType="User">
+		insert into `userinfo` values (
+		#{uid},
+		#{uniacid},
+		#{openid},
+		#{uage},
+		#{uphone},
+		#{ushengfen},
+		#{uyibao},
+		#{uname},
+		#{ucontent},
+		#{usex},
+		#{udatype},
+		#{uemail}
+		)
+	</insert>
+</mapper>
